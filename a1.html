@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let p = new Promise((resolve, reject) => {
+        // resolve('OK');
+    reject('p')
+    //     throw new Error()
+    });
+
+   const s=p.then(value => {
+       // throw new Error()
+    //   return 返回结果是一个非promise对象时结果
+       return new Promise((resolve, reject)=>{
+           reject('l')
+       })
+    }, reason=>{
+//       虽然是reject但是不影响s的值
+       return new Promise((resolve, reject)=>{
+        resolve('p')
+       })
+
+    })
+    console.log(s)
+</script>
+</html>
